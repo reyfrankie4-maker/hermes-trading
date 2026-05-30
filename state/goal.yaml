@@ -1,7 +1,0 @@
-asset: "BTC/USDC"
-target_return_30d: 0.10     # aggressive target — system will push higher via reflections
-max_drawdown:      0.08     # 8% max drawdown before bail
-min_sharpe:        1.0      # quality bar — solid risk-adjusted returns
-failure_below:     -0.04    # score floor — steeply negative below this
-reflection_every:  5        # every N closed trades, reflect and change one variable
-one_variable_only: true     # scientific-method guardrail — one change per cycle
