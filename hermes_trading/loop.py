@@ -38,7 +38,7 @@ class TradingLoop:
         self._running = False
         self._consecutive_failures = 0
         self._max_failures = 5
-        self._tick: float = 0
+        self._tick_count: int = 0
 
     async def run(self) -> None:
         self._running = True
@@ -59,7 +59,7 @@ class TradingLoop:
                     self._consecutive_failures = 0
 
             await asyncio.sleep(60)
-            self._tick += 1
+            self._tick_count += 1
 
     async def _tick(self) -> None:
         """One loop iteration."""
@@ -81,7 +81,7 @@ class TradingLoop:
         # 5. Write heartbeat
         self._write_heartbeat({
             "status": "running",
-            "tick": self._tick,
+            "tick": self._tick_count,
             "asset": self._asset,
             "price": data.get("price", 0),
             "last_trade": signal is not None,
